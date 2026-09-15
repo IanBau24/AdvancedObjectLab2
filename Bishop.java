@@ -22,6 +22,14 @@ public class Bishop{
     public int getRow(){
         return this.row;
     }
+
+    public void setColumn(char col){
+        this.col=col;
+    }
+
+    public void setRow(int row){
+        this.row=row;
+    }
     
     public boolean verifyTarget(char new_posx, int new_posy){
   			int x_diff = Math.abs(this.col - new_posx);
