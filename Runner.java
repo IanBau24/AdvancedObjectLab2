@@ -33,12 +33,22 @@ public class Runner {
         a,b,c,d,e,f,g,h
     }
 
-    // helper method to check if the position is the same
+    /**
+	 * Helper method to check if the position is the same
+	 *
+	 * @param col          original x position
+	 * @param row			original y position
+	 * @param newCol          x position to move to
+	 * @param newRow			y position to move to
+	 * @return                Bool, true if the position is not the same, false if the new position is the same
+	 */	
     public static boolean samePosition(char col, int row, char newCol, int newRow){
         return (col == newCol && row == newRow);
     }
 
-
+    /**
+	 * Main method that handles user input and validates piece moves.
+	 */	
     public static void readUser(){
         Scanner scan = new Scanner(System.in);
         boolean newPieceCreation = true;
@@ -203,10 +213,12 @@ public class Runner {
                         break;
                     case ROOK:
                         Rook r = new Rook(piece.name(), color, posX, posY);
-                        
+
+                        // handle logic for choosing position
                         sameOriginalPosition = true;
                         while (sameOriginalPosition) {
 
+                            // loop checks if position is valid
                             char targetCol = 0;
                             int targetRow = 0;
                             boolean targetValid = false;
