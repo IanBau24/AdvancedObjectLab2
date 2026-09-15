@@ -1,5 +1,23 @@
 import java.util.Scanner;
-
+/**
+ * main class. Parses a text file extracting the attributes of each chess piece per line
+ * creates an array to hold newly created chess pieces
+ * takes in input from the user, input is a target position to move the pieces
+ * traverses the array and uses valid methods to check if each type of piece can move to target possition (assuming board is empty)
+ * prints out message for each piece in the array dictating if the move is valid, does NOT move pieces to target position
+ * 
+ * @author Ian Bautista Ambriz, Ismael Renova, Ricardo Carranza
+ * @version 1.0.0
+ * @since 2026-09-01
+ * 
+ * Change Log:
+ * 2026-09-14 - Set up the runner class and finalized the chessboard class
+ *declared enumerated chess piece variables
+ *wrote
+ *wrote readUser method to initiate the user input loop
+ * 2026-09-15 - Added the chess piece classes, cleaned up structure, added documentation, and tested the program's functionality
+ *wrote verifyTarget methods for each class
+ */
 public class Runner {
     enum PieceType{
         KING,
