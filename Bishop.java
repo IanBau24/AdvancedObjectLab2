@@ -24,8 +24,8 @@ public class Bishop{
     }
     
     public boolean verifyTarget(char new_posx, int new_posy){
-  			int x_diff = Math.abs(posx - new_posx);
-  			int y_diff = Math.abs(posy - new_posy);
+  			int x_diff = Math.abs(this.col - new_posx);
+  			int y_diff = Math.abs(this.row - new_posy);
   			// bishop logic checks if the piece moved the same distance along the x and y positons, or a diagonal
   			if (x_diff == y_diff){
   				return true;
