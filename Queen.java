@@ -1,10 +1,10 @@
-public class King {
+public class Queen {
     private String pieceName; // left it as public to call it since directions didnt specify setter and getter for this
     String color;
     char col;
     int row;
 
-    King(String pieceName, String color, char col, int row){
+    Queen(String pieceName, String color, char col, int row){
         this.pieceName = pieceName;
         this.color = color;
         this.col = col;
@@ -24,9 +24,10 @@ public class King {
     }
 
 	public boolean verifyTarget(char newCol, int newRow){
-        int x_diff = Math.abs(col-newCol);
-        int y_diff = Math.abs(row-newRow);
-        // king can move if the new position is one away from the old positon in either x-axus or y-axis or both
-        return (x_diff + y_diff==1) || (x_diff == 1 && y_diff==1);
+        int x_diff = Math.abs(col - newCol);
+        int y_diff = Math.abs(row - newRow);
+
+        // check that the wueen only moved in one column or that it moved diagonally
+        return (col == newCol || row == newRow || x_diff == y_diff);
     }
 }

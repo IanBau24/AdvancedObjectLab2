@@ -1,10 +1,10 @@
-public class Bishop{
+public class Knight {
     private String pieceName;
     private String color;
     private char col;
     private int row;
 
-    Bishop(String pieceName, String color, char col, int row){
+    Knight(String pieceName, String color, char col, int row){
         this.pieceName = pieceName;
         this.color = color;
         this.col = col;
@@ -31,12 +31,11 @@ public class Bishop{
         this.row=row;
     }
     
-    public boolean verifyTarget(char new_posx, int new_posy){
-  			int x_diff = Math.abs(this.col - new_posx);
-  			int y_diff = Math.abs(this.row - new_posy);
-  			// bishop logic checks if the piece moved the same distance along the x and y positons, or a diagonal
-  			return (x_diff == y_diff);
+    public boolean verifyTarget(char newCol, int newRow){
+        int x_diff = Math.abs(col-newCol);
+        int y_diff = Math.abs(row-newRow);
+        // knight can move if the differences are of 1 and 3 in either x-axis or y-axis respectively
+        // by adding their differences all possible 1 and 3 combinations are checked
+        return (x_diff + y_diff==3) && (Math.abs(y_diff-x_diff)==1);
     }
-
-    
 }
