@@ -379,7 +379,7 @@ public class Runner {
                             }
 
                             // given a valid position use verifyTarget method to see if the piece can move to that position
-                            if (q.verifyTarget(targetCol, targetRow)) {
+                            if (kn.verifyTarget(targetCol, targetRow)) {
                                 System.out.println("Piece " + kn.getPieceName() + " in position " + kn.getColumn() + kn.getRow()
                                         + " can move to target position " + targetCol + targetRow);
                             } else {
@@ -440,7 +440,7 @@ public class Runner {
                             }
 
                             // given a valid position use verifyTarget method to see if the piece can move to that position
-                            if (q.verifyTarget(targetCol, targetRow)) {
+                            if (p.verifyTarget(targetCol, targetRow)) {
                                 System.out.println("Piece " + p.getPieceName() + " in position " + p.getColumn() + p.getRow()
                                         + " can move to target position " + targetCol + targetRow);
                             } else {

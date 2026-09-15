@@ -4,7 +4,7 @@ public class Rook{
     private char col;
     private int row;
 
-    Bishop(String pieceName, String color, char col, int row){
+    Rook(String pieceName, String color, char col, int row){
         this.pieceName = pieceName;
         this.color = color;
         this.col = col;

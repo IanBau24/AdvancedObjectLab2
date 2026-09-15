@@ -23,4 +23,14 @@ public class Pawn {
     public int getRow(){
         return this.row;
     }
+
+	public boolean verifyTarget(char newCol, int newRow){
+        if(this.color.equals("WHITE")){
+            return (this.col == newCol && (this.row + 1) == newRow);
+        }
+        if(this.color.equals("BLACK")){
+            return (this.col == newCol && (this.row - 1) == newRow);
+        }
+        return false;
+    }
 }
