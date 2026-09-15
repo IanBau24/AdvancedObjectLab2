@@ -1,6 +1,6 @@
 
 public class Pawn {
-    public String pieceName; // left it as public to call it since directions didnt specify setter and getter for this
+    private String pieceName; // left it as public to call it since directions didnt specify setter and getter for this
     String color;
     char col;
     int row;
@@ -10,5 +10,17 @@ public class Pawn {
         this.color = color;
         this.col = col;
         this.row = row;
+    }
+
+    public String getPieceName(){
+        return this.pieceName;
+    }
+
+    public char getColumn(){
+        return this.col;
+    }
+
+    public int getRow(){
+        return this.row;
     }
 }
