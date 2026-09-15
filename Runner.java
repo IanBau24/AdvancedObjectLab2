@@ -127,7 +127,7 @@ public class Runner {
                                 }
 
                                 // use same position method to check if piece moved at all
-                                if(samePosition(k.getColumn, k.getRow(), targetCol, targetRow)){
+                                if(samePosition(k.getColumn(), k.getRow(), targetCol, targetRow)){
                                     System.out.println("Target must be different from current position. Please try again.");
                                     continue;
                                 }
@@ -188,7 +188,7 @@ public class Runner {
                                 }
 
                                 // use same position method to check if piece moved at all
-                                if(samePosition(q.getColumn, q.getRow(), targetCol, targetRow)){
+                                if(samePosition(q.getColumn(), q.getRow(), targetCol, targetRow)){
                                     System.out.println("Target must be different from current position. Please try again.");
                                     continue;
                                 }
@@ -226,27 +226,37 @@ public class Runner {
                             while (!targetValid) {
                                 System.out.println("Enter target column and row, comma separated ex: a,1");
                                 String[] targetInput = scan.nextLine().split(",");
+
+                                //more parameters than needed
                                 if (targetInput.length != 2) {
                                     System.out.println("Invalid input, expected 2 values. Please try again.");
                                     continue;
                                 }
+
+                                // try catch to catch wrong input
                                 try {
                                     targetCol = targetInput[0].trim().toLowerCase().charAt(0);
                                     targetRow = Integer.parseInt(targetInput[1].trim());
                                 } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
                                     System.out.println("Invalid column/row format. Please try again.");
-                                    continue;
+                                    continue; // to go the top of the look
                                 } 
+
+                                // reuse same chessboard method to check bounds
                                 if (!Chessboard.withinChessboard(targetCol, targetRow)) {
                                     System.out.println("Column must be a-h and row must be 1-8. Please try again.");
                                     continue;
                                 }
-                                if(samePosition(t.getColumn, r.getRow(), targetCol, targetRow)){
+
+                                // use same position method to check if piece moved at all
+                                if(samePosition(r.getColumn(), r.getRow(), targetCol, targetRow)){
                                     System.out.println("Target must be different from current position. Please try again.");
                                     continue;
                                 }
-                                targetValid = true;
+                                targetValid = true; // passed all checks, exit inner loop
                             }
+
+                            // given a valid position use verifyTarget method to see if the piece can move to that position
                             if (r.verifyTarget(targetCol, targetRow)) {
                                 System.out.println("Piece " + r.getPieceName() + " in position " + r.getColumn() + r.getRow()
                                         + " can move to target position " + targetCol + targetRow);
@@ -255,17 +265,21 @@ public class Runner {
                                         + " cannot move to target position " + targetCol + targetRow);
                             }
 
+                            // ask user if they wanna move the same piece to another position
                             System.out.println("Verify another target using the same original position? (y/n)");
                             String again = scan.nextLine().trim().toLowerCase();
-                            sameOriginalPosition = again.equals("y");
+                            sameOriginalPosition = again.equals("y"); // keep loop condition as true
+                            // otherwise the loop will break and the user will have to select another piece
                         }
                         break;
                     case BISHOP:
                         Bishop b = new Bishop(piece.name(), color, posX, posY);
                         
+                        // handle logic for choosing position
                         sameOriginalPosition = true;
                         while (sameOriginalPosition) {
 
+                            // loop checks if position is valid
                             char targetCol = 0;
                             int targetRow = 0;
                             boolean targetValid = false;
@@ -273,27 +287,37 @@ public class Runner {
                             while (!targetValid) {
                                 System.out.println("Enter target column and row, comma separated ex: a,1");
                                 String[] targetInput = scan.nextLine().split(",");
+
+                                //more parameters than needed
                                 if (targetInput.length != 2) {
                                     System.out.println("Invalid input, expected 2 values. Please try again.");
                                     continue;
                                 }
+
+                                // try catch to catch wrong input
                                 try {
                                     targetCol = targetInput[0].trim().toLowerCase().charAt(0);
                                     targetRow = Integer.parseInt(targetInput[1].trim());
                                 } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
                                     System.out.println("Invalid column/row format. Please try again.");
-                                    continue;
+                                    continue; // to go the top of the look
                                 } 
+
+                                // reuse same chessboard method to check bounds
                                 if (!Chessboard.withinChessboard(targetCol, targetRow)) {
                                     System.out.println("Column must be a-h and row must be 1-8. Please try again.");
                                     continue;
                                 }
-                                if(samePosition(b.getColumn, b.getRow(), targetCol, targetRow)){
+
+                                // use same position method to check if piece moved at all
+                                if(samePosition(b.getColumn(), b.getRow(), targetCol, targetRow)){
                                     System.out.println("Target must be different from current position. Please try again.");
                                     continue;
                                 }
-                                targetValid = true;
+                                targetValid = true; // passed all checks, exit inner loop
                             }
+
+                            // given a valid position use verifyTarget method to see if the piece can move to that position
                             if (b.verifyTarget(targetCol, targetRow)) {
                                 System.out.println("Piece " + b.getPieceName() + " in position " + b.getColumn() + b.getRow()
                                         + " can move to target position " + targetCol + targetRow);
@@ -302,17 +326,21 @@ public class Runner {
                                         + " cannot move to target position " + targetCol + targetRow);
                             }
 
+                            // ask user if they wanna move the same piece to another position
                             System.out.println("Verify another target using the same original position? (y/n)");
                             String again = scan.nextLine().trim().toLowerCase();
-                            sameOriginalPosition = again.equals("y");
+                            sameOriginalPosition = again.equals("y"); // keep loop condition as true
+                            // otherwise the loop will break and the user will have to select another piece
                         }
                         break;
                     case KNIGHT:
                         Knight kn = new Knight(piece.name(), color, posX, posY);
                         
+                        // handle logic for choosing position
                         sameOriginalPosition = true;
                         while (sameOriginalPosition) {
 
+                            // loop checks if position is valid
                             char targetCol = 0;
                             int targetRow = 0;
                             boolean targetValid = false;
@@ -320,28 +348,38 @@ public class Runner {
                             while (!targetValid) {
                                 System.out.println("Enter target column and row, comma separated ex: a,1");
                                 String[] targetInput = scan.nextLine().split(",");
+
+                                //more parameters than needed
                                 if (targetInput.length != 2) {
                                     System.out.println("Invalid input, expected 2 values. Please try again.");
                                     continue;
                                 }
+
+                                // try catch to catch wrong input
                                 try {
                                     targetCol = targetInput[0].trim().toLowerCase().charAt(0);
                                     targetRow = Integer.parseInt(targetInput[1].trim());
                                 } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
                                     System.out.println("Invalid column/row format. Please try again.");
-                                    continue;
+                                    continue; // to go the top of the look
                                 } 
+
+                                // reuse same chessboard method to check bounds
                                 if (!Chessboard.withinChessboard(targetCol, targetRow)) {
                                     System.out.println("Column must be a-h and row must be 1-8. Please try again.");
                                     continue;
                                 }
-                                if(samePosition(kn.getColumn, kn.getRow(), targetCol, targetRow)){
+
+                                // use same position method to check if piece moved at all
+                                if(samePosition(kn.getColumn(), kn.getRow(), targetCol, targetRow)){
                                     System.out.println("Target must be different from current position. Please try again.");
                                     continue;
                                 }
-                                targetValid = true;
+                                targetValid = true; // passed all checks, exit inner loop
                             }
-                            if (kn.verifyTarget(targetCol, targetRow)) {
+
+                            // given a valid position use verifyTarget method to see if the piece can move to that position
+                            if (q.verifyTarget(targetCol, targetRow)) {
                                 System.out.println("Piece " + kn.getPieceName() + " in position " + kn.getColumn() + kn.getRow()
                                         + " can move to target position " + targetCol + targetRow);
                             } else {
@@ -349,17 +387,21 @@ public class Runner {
                                         + " cannot move to target position " + targetCol + targetRow);
                             }
 
+                            // ask user if they wanna move the same piece to another position
                             System.out.println("Verify another target using the same original position? (y/n)");
                             String again = scan.nextLine().trim().toLowerCase();
-                            sameOriginalPosition = again.equals("y");
+                            sameOriginalPosition = again.equals("y"); // keep loop condition as true
+                            // otherwise the loop will break and the user will have to select another piece
                         }
                         break;
                     case PAWN:
                         Pawn p = new Pawn(piece.name(), color, posX, posY);
                         
+                        // handle logic for choosing position
                         sameOriginalPosition = true;
                         while (sameOriginalPosition) {
 
+                            // loop checks if position is valid
                             char targetCol = 0;
                             int targetRow = 0;
                             boolean targetValid = false;
@@ -367,28 +409,38 @@ public class Runner {
                             while (!targetValid) {
                                 System.out.println("Enter target column and row, comma separated ex: a,1");
                                 String[] targetInput = scan.nextLine().split(",");
+
+                                //more parameters than needed
                                 if (targetInput.length != 2) {
                                     System.out.println("Invalid input, expected 2 values. Please try again.");
                                     continue;
                                 }
+
+                                // try catch to catch wrong input
                                 try {
                                     targetCol = targetInput[0].trim().toLowerCase().charAt(0);
                                     targetRow = Integer.parseInt(targetInput[1].trim());
                                 } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
                                     System.out.println("Invalid column/row format. Please try again.");
-                                    continue;
+                                    continue; // to go the top of the look
                                 } 
+
+                                // reuse same chessboard method to check bounds
                                 if (!Chessboard.withinChessboard(targetCol, targetRow)) {
                                     System.out.println("Column must be a-h and row must be 1-8. Please try again.");
                                     continue;
                                 }
-                                if(samePosition(p.getColumn, p.getRow(), targetCol, targetRow)){
+
+                                // use same position method to check if piece moved at all
+                                if(samePosition(p.getColumn(), p.getRow(), targetCol, targetRow)){
                                     System.out.println("Target must be different from current position. Please try again.");
                                     continue;
                                 }
-                                targetValid = true;
+                                targetValid = true; // passed all checks, exit inner loop
                             }
-                            if (p.verifyTarget(targetCol, targetRow)) {
+
+                            // given a valid position use verifyTarget method to see if the piece can move to that position
+                            if (q.verifyTarget(targetCol, targetRow)) {
                                 System.out.println("Piece " + p.getPieceName() + " in position " + p.getColumn() + p.getRow()
                                         + " can move to target position " + targetCol + targetRow);
                             } else {
@@ -396,9 +448,11 @@ public class Runner {
                                         + " cannot move to target position " + targetCol + targetRow);
                             }
 
+                            // ask user if they wanna move the same piece to another position
                             System.out.println("Verify another target using the same original position? (y/n)");
                             String again = scan.nextLine().trim().toLowerCase();
-                            sameOriginalPosition = again.equals("y");
+                            sameOriginalPosition = again.equals("y"); // keep loop condition as true
+                            // otherwise the loop will break and the user will have to select another piece
                         }
                         break;
                 }
@@ -419,7 +473,6 @@ public class Runner {
             }
         }
     }
-
 
     public static void main(String[] args) {
         readUser();
